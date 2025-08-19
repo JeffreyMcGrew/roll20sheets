@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap');
 
 /*----------------- Main Layout ------------------*/
 
@@ -5,17 +6,7 @@
   https://developer.mozilla.org/en-US/docs/Web/CSS/grid-template-areas
 */
 main {
-  display: grid;
-  width: 800px;
-  height: 900px;
-  grid-gap: 4px;
-  grid-template-columns: 160px 1fr 1fr 1fr;
-  grid-template-rows: 90px 1fr 1fr 1fr 20px;
-  grid-template-areas:"header header  header  header"
-                      "skill  common  common  power"
-                      "skill  attack  inv     power"
-                      "misc   misc    inv     power"
-                      "footer footer  footer  footer";
+
 }
 
 /*----------------- GENERAL CSS ------------------*/
@@ -30,18 +21,22 @@ section {
   display: flex;
   flex-direction: column;
 }
+
 .f-row {
   display: flex;
   flex-direction: row;
 }
+
 .wrap {
   display: flex;
   flex-wrap: wrap;
 }
+
 .nowrap {
   display: flex;
   flex-wrap: nowrap;
 }
+
 .f-center {
   align-items: center;
   justify-content: center;
@@ -59,16 +54,38 @@ section {
   font-family: "Lexend";
 }
 
-.charsheet h3{
-  text-align: center;
+.charsheet h1 {
+  font-family: 'MedievalSharp', cursive;
 }
-.charsheet label{
+
+.charsheet h2 {
+  font-family: 'MedievalSharp', cursive;  
+}
+
+.charsheet h3 {
+  text-align: center;
+  margin-top: 0;
+  font-family: 'MedievalSharp', cursive;
+}
+
+.charsheet h4 {
+  text-align: center;
+  font-family: 'MedievalSharp', cursive;
+}
+
+.charsheet label {
   margin: 3px;
   padding: 3px 0 0 0;
+  color: #000;
+  font-family: 'MedievalSharp', cursive;
 }
 
 .charsheet input[type="text"], input[type="number"]{
   margin: 2px 4px;
+}
+
+.charsheet input[type="text"] {
+  width: 95%;
 }
 
 .charsheet textarea {
@@ -76,56 +93,102 @@ section {
   height: 85%;
 }
 
+.label_text {
+  color: #000;
+  font-family: 'MedievalSharp', cursive;
+}
+
+.attr_text {
+  color: #000;
+  font-family: 'MedievalSharp', cursive;
+}
+
+.physical-stats {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.mental-stats {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.Spiritual-stats {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
 /*------------- Section-specific CSS -------------*/
 
 .header {
-  grid-area: header;
-  background-color: olive;
-  flex-direction: column;
+  background-color: #fff;
 }
 
-.skill {
-  grid-area: skill;
-  background-color: orange;
-  justify-content: space-evenly;
+.header-grid {
+  display: grid;
+  grid-template-columns: auto auto;
+}
+
+.attributes {
+  background-color: #e8e8e8;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.attributes-grid {
+  display: grid;
+  grid-template-columns: auto auto auto;
 }
 
 .common {
-  grid-area: common;
-  background-color: brown;
+  display: grid;
+  grid-template-columns: 30% 70%;
+  background-color: #b8b8b8;
 }
 
-.power {
-  grid-area: power;
-  background-color: coral;
+.harm-table {
+  display: grid;
+  grid-template-columns: 50% 50%;
 }
 
-.power .repcontainer[data-groupname="repeating_power"]{
+.harm-table-heroic {
+  grid-column: 1 / span 2;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.harm-table-area {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.harm-entry {
+  width: 100%;
+}
+
+.talents {
+  background-color: #888;
+}
+
+.talents .repcontainer[data-groupname="repeating_power"]{
   padding-bottom: 0.2em;
 }
 
-.power .repcontainer[data-groupname="repeating_power"] .repitem{
+.talents .repcontainer[data-groupname="repeating_power"] .repitem{
   margin: 4px 0px;
 }
 
-.attack {
-  grid-area: attack;
-  background-color: green;
+.inv {
+  background-color: #777;
 }
 
-.inv {
-  grid-area: inv;
-  background-color: grey;
+.gear-line {
+  display: grid;
+  grid-template-columns: 85% 15%;
 }
 
 .misc {
-  grid-area: misc;
-  background-color: chocolate;
-}
-
-footer {
-  grid-area: footer;
-  background-color: lightgray;
+  background-color: #777;
 }
 
 /*------------------------------------*\
@@ -178,3 +241,87 @@ footer {
 .sheet-rolltemplate-rolls .sheet-content :nth-child(4n) {
   background: #EEE;
 }
+
+
+/*------------------------------------*\
+  #Progress Bars
+\*------------------------------------*/
+
+.fortune-bar {
+  align-self: start;
+  text-align: center;
+}
+
+.progress-bar {
+  display: inline-flex;
+}
+
+.xp-bar {
+  display: inline;
+}
+
+div.sheet-forbar {
+  width: 230px;
+  height: 20px;
+  border: 2px solid black;
+  color: black;
+  font-size: 12px;
+  font-weight: bold;
+  text-align: center;
+}
+input.sheet-forbar[value="0"] ~ div.sheet-forbar {
+  background: white;
+}
+  input.sheet-forbar[value="0"] ~ div.sheet-forbar::before {
+      content: "All the Luck";
+  }
+input.sheet-forbar[value="1"] ~ div.sheet-forbar {
+  background: linear-gradient(to left, white 90%, #255200 5%,#449600 95%, #adfc03 100%);
+}
+input.sheet-forbar[value="2"] ~ div.sheet-forbar {
+  background: linear-gradient(to left, white 80%, #255200 10%,#449600 90%, #adfc03 100%);
+}
+input.sheet-forbar[value="3"] ~ div.sheet-forbar {
+  background: linear-gradient(to left, white 70%, #255200 20%,#449600 80%, #adfc03 100%);
+}
+input.sheet-forbar[value="4"] ~ div.sheet-forbar {
+  background: linear-gradient(to left, white 60%, #255200 30%,#449600 70%, #adfc03 100%);
+}
+input.sheet-forbar[value="5"] ~ div.sheet-forbar {
+  background: linear-gradient(to left, white 50%, #255200 40%,#449600 60%, #adfc03 80%);
+}
+  input.sheet-forbar[value="5"] ~ div.sheet-forbar::before {
+      content:"Half Spent";
+  }
+input.sheet-forbar[value="6"] ~ div.sheet-forbar {
+  background: linear-gradient(to left, white 40%, #255200 40%,#449600 50%, #adfc03 70%);
+}
+input.sheet-forbar[value="7"] ~ div.sheet-forbar {
+  background: linear-gradient(to left, white 30%, #255200 30%,#449600 40%, #adfc03 60%);
+}   
+  input.sheet-forbar[value="7"] ~ div.sheet-forbar::before {
+      content:"Running Out!";
+  } 
+input.sheet-forbar[value="8"] ~ div.sheet-forbar {
+  background: linear-gradient(to left, white 20%, #465200 20%,#8e9600 30%, #fcf403 50%);
+}
+  input.sheet-forbar[value="8"] ~ div.sheet-forbar::before {
+      content:"Running Out!";
+  } 
+input.sheet-forbar[value="9"] ~ div.sheet-forbar {
+  background: linear-gradient(to left, white 10%, #523f00 10%,#968900 20%, #fceb03 40%);
+}   input.sheet-forbar[value="9"] ~ div.sheet-forbar::before {
+      content:"Running Out!";
+  } 
+input.sheet-forbar[value="10"] ~ div.sheet-forbar {
+  background: linear-gradient(to left, #522500 1%,#c04e19 10%, #fc0303 30%);
+}
+  input.sheet-forbar[value="10"] ~ div.sheet-forbar::before {
+      content:"None Left!";
+  }
+input.sheet-forbar[value="11"] ~ div.sheet-forbar {
+  background: linear-gradient(to left, #870909 1%,#d60b0b 10%, #fc0303 30%);
+}
+  input.sheet-forbar[value="11"] ~ div.sheet-forbar::before {
+      content:"MARKED!";
+  }
